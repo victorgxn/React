@@ -2,10 +2,16 @@ import { useEffect } from "react";
 
 export const Message = () => {
   useEffect(() => {
-    console.log("Message mounted");
+    const coords = ({ x, y }) => {
+      //Desectructuramos del evento las propiedad {x,y} que son las que nos interesan
+      const coordenadas = { x, y };
+      console.log(coordenadas);
+    };
+
+    window.addEventListener("mousemove", coords);
 
     return () => {
-      console.log("Message Unmounted");
+      window.removeEventListener("mousemove", coords);
     };
   }, []);
 
