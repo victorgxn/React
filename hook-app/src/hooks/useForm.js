@@ -12,11 +12,19 @@ export const useForm = (initialForm = {}) => {
       //Tambien podemos crear propiedades desde aqui
     });
   };
+
+  const onResetForm = () => {
+    setFormState(initialForm); //Esto es lo mismo que poner todos los valores clave valor y igualarlos a nada, ya que lo estamos poniendo al valor inicial que es vacio.
+  };
+
   return {
     ...formState, //Esto es lo mismo que devolver nombre email y password
     formState,
-    onInputChange
+    onInputChange,
+    onResetForm
   };
+
 }
+
 
 
