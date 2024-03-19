@@ -29,8 +29,22 @@ export const useFetch = (url) => {
   }
 
   const getFetch = async () => {
+
+    //Ganamos rendimiento no tenemos que hacer peticiones de algo que ya ha sido consumido anteriormente
+    if (localCache[url]) {
+      setState({
+        data: localCache[url],
+        isLoading: false,
+        hasError: false,
+        error: null
+      });
+      return;
+    }
+
     //Para cada vez que cambie se vuelva a esteblecer los valores iniciales.
     setLoadingState();
+
+
     const resp = await fetch(url)
 
 
@@ -54,7 +68,8 @@ export const useFetch = (url) => {
       hasError: false,
       error: null
     })
-    console.log({ data });
+    //Guardamos clave-valor
+    localCache[url] = data;
   }
 
   return {

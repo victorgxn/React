@@ -28,9 +28,6 @@ export const MultipleCustomHooks = () => {
           ]}
         />
       )}
-      {/*Esto significa que si isLoading esta en true mientras imprime cargando */}
-      <h2>{data?.name}</h2>{" "}
-      {/*Esto significa que si existe el data.name imprimelo mientras pues nada */}
       <button
         className="btn btn-primary mt-2"
         onClick={() => (counter > 1 ? decrement() : null)}
